@@ -1,3 +1,7 @@
+ifeq ($(CONFIG_MACH_XIAOMI_HAYDN),y)
+dtbo-y += haydn-sm8350-overlay.dtbo
+haydn-sm8350-overlay.dtbo-base := lahaina.dtb
+else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_LAHAINA) += lahaina-rumi-overlay.dtbo \
@@ -6,7 +10,6 @@ dtbo-$(CONFIG_ARCH_LAHAINA) += lahaina-rumi-overlay.dtbo \
 	star-sm8350-overlay.dtbo \
 	odin-sm8350-overlay.dtbo \
 	venus-sm8350-overlay.dtbo \
-	haydn-sm8350-overlay.dtbo \
 	mars-sm8350-overlay.dtbo \
 	vili-sm8350-overlay.dtbo \
 	lahaina-mtp-hsp-overlay.dtbo \
@@ -35,7 +38,6 @@ cetus-sm8350-overlay.dtbo-base := lahaina.dtb
 star-sm8350-overlay.dtbo-base := lahaina.dtb
 odin-sm8350-overlay.dtbo-base := lahaina.dtb
 venus-sm8350-overlay.dtbo-base := lahaina.dtb
-haydn-sm8350-overlay.dtbo-base := lahaina.dtb
 mars-sm8350-overlay.dtbo-base := lahaina.dtb
 vili-sm8350-overlay.dtbo-base := lahaina.dtb
 lahaina-mtp-overlay.dtbo-base := lahaina.dtb lahaina-v2.dtb lahaina-v2.1.dtb
@@ -586,6 +588,7 @@ dtb-$(CONFIG_ARCH_DIREWOLF) += direwolf-ivi-rumi.dtb \
 	direwolf-ivi-adp-star.dtb \
 	direwolf-adas-rumi.dtb \
 	direwolf-adas-adp-star.dtb
+endif
 endif
 
 always		:= $(dtb-y)
